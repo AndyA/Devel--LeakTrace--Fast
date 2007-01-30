@@ -1,0 +1,32 @@
+Baseline: The following code
+
+    my @test = (0,) x 1000;
+
+    srand(0);
+
+    for (my $i = 0; $i < @test; $i++) {
+        my $j = int(rand() * @test);
+        $test[$j] = \$test[$i];
+    }
+
+causes a huge number of hash operations - basically bouncing the hash
+back and forwards over and over again. Here's the baseline from the hash
+instrumentation:
+
+       hash_new():       8032
+    hash_delete():       2007
+hash_delete_key():          0
+       hash_put():   12395372
+       hash_get():   12391791
+          _hash():   24787163
+        _rehash():       6024
+          _find():   24787163
+
+The output from Devel::LeakTrace for this script should look like this:
+
+leaked SV(0x1812578) from t.pl line 9
+leaked SV(0x180eac4) from t.pl line 9
+leaked SV(0x182f44c) from t.pl line 9
+leaked SV(0x182f530) from t.pl line 13
+
+give or take an address or two.

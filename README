@@ -1,0 +1,74 @@
+README for Devel::LeakTrace 0.05
+
+=head1 NAME
+
+Devel::LeakTrace - indicate where leaked variables are coming from.
+
+=head1 SYNOPSIS
+
+  perl -MDevel::LeakTrace -e '{ my $foo; $foo = \$foo }'
+  leaked SV(0x528d0) from -e line 1
+  leaked SV(0x116a10) from -e line 1
+
+
+=head1 DEPENDENCIES
+
+This module has external dependencies on the following modules:
+
+ Module::Build	0.19
+ Test::More
+
+=head1 INSTALLATION
+
+ perl Build.PL
+ perl Build test
+
+and if all goes well
+
+ perl Build install
+
+=head1 HISTORY
+
+What changed over the last 3 revisions
+
+=over
+
+=item 0.05 Friday 19th September, 2003
+
+	Fix the INIT/BEGIN thing correctly by adding resetting as an
+	independant action
+
+	Small speedup.  At every boundary check that PL_sv_count hasn't 
+	changed.  There's potential for this to fuck up in the case where you
+	free and create an SV in the same statement.  Never mind the 
+	correctness, feel the speed.
+
+
+=item 0.04 Tuesday 15th July, 2003
+
+	Port to Module::Build 0.19
+	Couple of speedups in not doing quite as much mallocing - 25% then 2.3%
+
+
+=item 0.03 Wednesday 7th May, 2003
+
+	Test suite fixes
+
+=back
+
+=head1 AUTHOR
+
+Richard Clamp <richardc@unixbeard.net> with portions of LeakTrace.xs
+taken from Nick Ing-Simmons' Devel::Leak module.
+
+=head1 COPYRIGHT
+
+Copyright (C) 2002 Richard Clamp. All Rights Reserved.
+
+This module is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
+=head1 SEE ALSO
+
+L<Devel::Leak>, L<Devel::Cover>
+

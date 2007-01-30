@@ -1,0 +1,20 @@
+# Files to skip
+
+\.DS_Store
+\.b$
+\.bak$
+\.bs$
+\.o$
+\.orig$
+\.svn
+\.txt$
+^Build$
+^MANIFEST\.SKIP$
+^Makefile$
+^\.
+^_build
+^blib
+~$
+
+# Specific to this Devel::LeakTrace
+
