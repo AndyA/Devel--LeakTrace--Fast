@@ -18,6 +18,7 @@ int buffer_delete(buffer *b);
 int buffer_ensure(buffer *b, size_t minsize);
 int buffer_ensure_free(buffer *b, size_t minfree);
 int buffer_append(buffer *b, const void *m, size_t len);
+int buffer_set_used(buffer *b, size_t used);
 
 #define buffer_used(b) ((b)->used)
 #define buffer_size(b) ((b)->size)

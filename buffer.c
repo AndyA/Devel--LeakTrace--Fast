@@ -71,3 +71,16 @@ int buffer_append(buffer *b, const void *m, size_t len) {
     b->used += len;
     return ERR_None;
 }
+
+int buffer_set_used(buffer *b, size_t used) {
+    int err;
+
+    if (used > b->used) {
+        if (err = buffer_ensure_free(b, used - b->used), ERR_None != err) {
+            return err;
+        }
+    }
+    
+    b->used = used;
+    return ERR_None;
+}

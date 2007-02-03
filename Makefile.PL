@@ -1,8 +1,9 @@
 use strict;
 use warnings;
 use ExtUtils::MakeMaker;
+use Config;
 
-WriteMakefile(
+my %args = (
     NAME                => 'Devel::LeakTrace::Fast',
     AUTHOR              => 'Andy Armstrong <andy@hexten.net>',
     VERSION_FROM        => 'lib/Devel/LeakTrace/Fast.pm',
@@ -20,3 +21,10 @@ WriteMakefile(
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean               => { FILES => 'Devel-LeakTrace-Fast-*' },
 );
+
+warn $Config{'ccname'}, "\n";
+if ($Config{'ccname'} =~ /gcc/) {
+    $args{CCFLAGS} = '-Wall';
+}
+
+WriteMakefile( %args );

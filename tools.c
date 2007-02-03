@@ -48,6 +48,7 @@ static const where *get_where(int line, const char *file) {
     static buffer work;
     where *w;
     int err;
+    size_t sz;
 
     if (!file) {
         return NULL;
@@ -63,7 +64,7 @@ static const where *get_where(int line, const char *file) {
         init_done = 1;
     }
     
-    size_t sz = sizeof(where) + strlen(file) + 1;
+    sz = sizeof(where) + strlen(file) + 1;
     if (err = buffer_ensure(&work, sz), ERR_None != err) {
         nomem();
     }
@@ -73,7 +74,7 @@ static const where *get_where(int line, const char *file) {
     strcpy((char *) (w+1), file);
     
     /* Already got it? */
-    if (w = (where *) hash_get(cache, w, sz)) {
+    if (w = (where *) hash_get(cache, w, sz), NULL != w) {
         return w;
     }
     
@@ -108,7 +109,6 @@ static void new_var(SV *sv, const void *p) {
 
 static void free_var(SV *sv, const void *p) {
     int err;
-    const where *w = p;
 
 /*    fprintf(stderr, "%s, line %d: Free var: %p\n", (const char *) (w + 1), w->line, sv);*/
     if (!var_map) {
@@ -378,6 +378,10 @@ static void print_var(SV *sv, const where *w) {
         w = hash_get(var_map, &sv, sizeof(sv));
     }
 
+    /* TODO: We have a test failure around here
+     *   http://www.nntp.perl.org/group/perl.cpan.testers/408205
+     * Perhaps a 5.9.4 issue?
+     */
     switch SvTYPE(sv) {
     case SVt_PVAV:  type = "AV"; break;
     case SVt_PVCV:  type = "CV"; break;
@@ -387,14 +391,8 @@ static void print_var(SV *sv, const where *w) {
     default:        type = "SV"; break;
     }
 
-    if (!w) {
-        /*fprintf(stderr, "leaked %s(0x%x) from uknown location\n", */
-        /*      type, sv); */
-    } else {
-        fprintf(stderr, "leaked %s(0x%x) from %s line %d\n", 
-                type, sv, (const char *) (w + 1), w->line);
-        //sv_dump(sv);
-    }
+    fprintf(stderr, "leaked %s(0x%p) from %s line %d\n", 
+            type, sv, (const char *) (w + 1), w->line);
 }
 
 void tools_show_used(void) {
@@ -407,8 +405,6 @@ void tools_show_used(void) {
     fprintf(stderr, "Leaks found by free list snooping:\n");
 #endif
 
-    /*fprintf(stderr, "%ld vars noted\n", hash_size(var_map)); */
-    
     k = hash_get_first_key(var_map, &i, &kl);
     while (k) {
         const where *w = (const where *) hash_GETNULL(hash_get(var_map, k, kl));

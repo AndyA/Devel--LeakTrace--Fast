@@ -194,10 +194,11 @@ static int _rehash(hash *h) {
     hash *nh;
     hash_iter i;
     int err;
-    INST_I(rehash);
 
     /* Might as well have plenty of buckets: they're cheap */
     long ncap = NMAX(10, h->size * 2);
+
+    INST_I(rehash);
 
     /* All we do is make a new hash and copy the old one into it...
      */
