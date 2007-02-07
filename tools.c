@@ -378,11 +378,7 @@ static void print_var(SV *sv, const where *w) {
         w = hash_get(var_map, &sv, sizeof(sv));
     }
 
-    /* TODO: We have a test failure around here
-     *   http://www.nntp.perl.org/group/perl.cpan.testers/408205
-     * Perhaps a 5.9.4 issue?
-     */
-    switch SvTYPE(sv) {
+    switch (SvTYPE(sv)) {
     case SVt_PVAV:  type = "AV"; break;
     case SVt_PVCV:  type = "CV"; break;
     case SVt_PVGV:  type = "GV"; break;

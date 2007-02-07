@@ -1,20 +1,19 @@
-# Files to skip
+^andy/
+^Notes[.]txt$
+\B\.svn\b
+^cover_db/
 
-\.DS_Store
-\.b$
-\.bak$
-\.bs$
-\.o$
-\.orig$
-\.svn
-\.txt$
-^Build$
-^MANIFEST\.SKIP$
+# Makemaker generated files and dirs.
+^MANIFEST\.
 ^Makefile$
-^\.
-^_build
-^blib
+^blib/
+^pm_to_blib$
+
+# Temp, old and emacs backup files.
 ~$
+\.(old|tmp|bak)$
+^#.*#$
+^\.#
 
-# Specific to this Devel::LeakTrace
-
+^[.]
+\.tmproj$

@@ -12,6 +12,7 @@
 
 #     ABSTRACT_FROM => q[lib/Devel/LeakTrace/Fast.pm]
 #     AUTHOR => q[Andy Armstrong <andy@hexten.net>]
+#     CCFLAGS => q[-Wall]
 #     DEFINE => q[]
 #     INC => q[-I. -Isupport]
 #     LIBS => [q[]]
@@ -19,6 +20,7 @@
 #     OBJECT => q[buffer.o hash.o list.o tools.o Fast.o]
 #     PL_FILES => {  }
 #     PREREQ_PM => { Test::More=>q[0], version=>q[0] }
+#     SIGN => q[1]
 #     VERSION_FROM => q[lib/Devel/LeakTrace/Fast.pm]
 #     clean => { FILES=>q[Devel-LeakTrace-Fast-*] }
 #     dist => { COMPRESS=>q[gzip -9f], SUFFIX=>q[gz] }
@@ -289,7 +291,7 @@ DISTVNAME = Devel-LeakTrace-Fast-0.0.1
 
 # --- MakeMaker cflags section:
 
-CCFLAGS = -g -pipe -fno-common -DPERL_DARWIN -no-cpp-precomp -fno-strict-aliasing -I/usr/local/include
+CCFLAGS = -Wall
 OPTIMIZE = -Os
 PERLTYPE = 
 MPOLLUTE = 
@@ -665,7 +667,7 @@ create_distdir :
 	$(PERLRUN) "-MExtUtils::Manifest=manicopy,maniread" \
 		-e "manicopy(maniread(),'$(DISTVNAME)', '$(DIST_CP)');"
 
-distdir : create_distdir distmeta 
+distdir : create_distdir distmeta distsignature
 	$(NOECHO) $(NOOP)
 
 

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>tools.c</string>
+	<string>Makefile.PL</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,6 +21,20 @@
 	<integer>200</integer>
 	<key>metaData</key>
 	<dict>
+		<key>Fast.xs</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>MANIFEST</key>
 		<dict>
 			<key>caret</key>
@@ -70,9 +84,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>19</integer>
+				<integer>29</integer>
 				<key>line</key>
-				<integer>25</integer>
+				<integer>6</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -121,6 +135,20 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>common.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>hash.c</key>
 		<dict>
 			<key>caret</key>
@@ -128,26 +156,26 @@
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>424</integer>
+				<integer>19</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>380</integer>
+			<integer>45</integer>
 		</dict>
 		<key>hash.h</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>26</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>61</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>21</integer>
+			<integer>0</integer>
 		</dict>
 		<key>lib/Devel/LeakTrace/Fast.pm</key>
 		<dict>
@@ -156,12 +184,28 @@
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>79</integer>
+				<integer>9</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>12</integer>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>27</integer>
+				<key>line</key>
+				<integer>9</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>9</integer>
+			</dict>
 		</dict>
 		<key>tools.c</key>
 		<dict>
@@ -170,12 +214,12 @@
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>403</integer>
+				<integer>381</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>370</integer>
+			<integer>357</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
@@ -187,8 +231,10 @@
 		<string>hash.c</string>
 		<string>buffer.h</string>
 		<string>hash.h</string>
+		<string>common.h</string>
 		<string>buffer.c</string>
 		<string>Makefile.PL</string>
+		<string>Fast.xs</string>
 		<string>MANIFEST</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
