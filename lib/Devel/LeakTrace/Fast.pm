@@ -7,17 +7,17 @@ use warnings;
 use base 'DynaLoader';
 
 BEGIN {
-    our $VERSION = '0.0.2';
+    our $VERSION = '0.0.3';
     bootstrap Devel::LeakTrace::Fast $VERSION;
-    hook_runops();
+    _hook_runops();
 }
 
 INIT {
-    reset_counters();
+    _reset_counters();
 }
 
 END {
-    show_used();
+    _show_used();
 }
 
 1;
