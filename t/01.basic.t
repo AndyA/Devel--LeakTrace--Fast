@@ -2,9 +2,11 @@
 use strict;
 use Test::More tests => 11;
 
+my $inc = join(' ', map { "-I$_" } @INC);
+
 sub output ($) {
     my $code = shift;
-    `$^X -MDevel::LeakTrace::Fast -e'$code' 2>&1`
+    `$^X $inc -MDevel::LeakTrace::Fast -e'$code' 2>&1`
 }
 
 is( output '1;', '', 'no statements = no leak' );

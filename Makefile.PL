@@ -7,6 +7,7 @@ my %args = (
     ( MM->can( 'signature_target' ) ? ( SIGN => 1 ) : () ),
     NAME          => 'Devel::LeakTrace::Fast',
     AUTHOR        => 'Andy Armstrong <andy@hexten.net>',
+    LICENSE       => 'perl',
     VERSION_FROM  => 'lib/Devel/LeakTrace/Fast.pm',
     ABSTRACT_FROM => 'lib/Devel/LeakTrace/Fast.pm',
     PL_FILES      => {},
