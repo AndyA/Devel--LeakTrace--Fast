@@ -3,8 +3,8 @@
 #include "tools.h"
 
 /* Enable to do old style brute force checking too */
-/*#define BRUTE_FORCE */
-/*#define SANITY */
+#define BRUTE_FORCE
+#define SANITY
 
 typedef struct {
     int line;
