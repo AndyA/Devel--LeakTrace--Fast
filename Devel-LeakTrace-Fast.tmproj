@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Makefile.PL</string>
+	<string>tools.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -219,6 +219,62 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>list.c</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>37</integer>
+		</dict>
+		<key>list.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>20</integer>
+		</dict>
+		<key>t/00.load.t</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>3</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>t/01.basic.t</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>14</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>t/pod-coverage.t</key>
 		<dict>
 			<key>caret</key>
@@ -252,47 +308,61 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>12</integer>
 				<key>line</key>
-				<integer>381</integer>
+				<integer>256</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>357</integer>
+			<integer>254</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>7</integer>
 				<key>line</key>
-				<integer>380</integer>
+				<integer>256</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
+				<integer>12</integer>
+				<key>line</key>
+				<integer>256</integer>
+			</dict>
+		</dict>
+		<key>tools.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>381</integer>
+				<integer>0</integer>
 			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>MANIFEST.SKIP</string>
 		<string>tools.c</string>
+		<string>tools.h</string>
 		<string>Changes</string>
 		<string>lib/Devel/LeakTrace/Fast.pm</string>
 		<string>Makefile.PL</string>
+		<string>t/01.basic.t</string>
+		<string>list.c</string>
+		<string>list.h</string>
+		<string>t/00.load.t</string>
 		<string>t/pod.t</string>
 		<string>t/pod-coverage.t</string>
 		<string>README</string>
-		<string>hash.c</string>
-		<string>buffer.h</string>
-		<string>hash.h</string>
-		<string>common.h</string>
-		<string>Fast.xs</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
