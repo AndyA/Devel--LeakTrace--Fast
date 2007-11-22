@@ -3,8 +3,8 @@
 #include "tools.h"
 
 /* Enable to do old style brute force checking too */
-#define BRUTE_FORCE
-#define SANITY
+/* #define BRUTE_FORCE */
+/* #define SANITY  */
 
 typedef struct {
     int line;
@@ -168,10 +168,7 @@ static void free_list_sane(void) {
     list comp_free;
     int err;
     SV *sva;
-    SV **real_ar;
-    SV **comp_ar;
-    long real_p, comp_p, diff;
-    size_t real_sz, comp_sz;
+    long diff;
     
     /* Get the real free list */
     if (err = list_build(&real_free, PL_sv_root, list_hint(&current_free)), ERR_None != err) {
@@ -283,13 +280,15 @@ static void brute_force(int line, const char *file) {
                         nw = hash_GETNULL(ow);
                     } else {
                         if (w) {
-                            fprintf(stderr, "%s, line %d: New var (bf): %p\n",
-                                        (const char *) (w + 1), w->line, sv);
+                            fprintf(stderr,
+                                "%s, line %d: New var (bf): %p\n",
+                                (const char *) (w + 1), w->line, sv);
                         }
                     }
                 }
 
-                if (err = hash_put(baby, &sv, sizeof(sv), hash_PUTNULL((void *) nw)), ERR_None != err) {
+                if (err = hash_put(baby, &sv, sizeof(sv), 
+                    hash_PUTNULL((void *) nw)), ERR_None != err) {
                     nomem();
                 }
             }

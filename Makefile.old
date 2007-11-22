@@ -1,12 +1,12 @@
 # This Makefile is for the Devel::LeakTrace::Fast extension to perl.
 #
 # It was generated automatically by MakeMaker version
-# 6.32 (Revision: 27436) from the contents of
+# 6.36_01 (Revision: 32261) from the contents of
 # Makefile.PL. Don't edit this file, edit Makefile.PL instead.
 #
 #       ANY CHANGES MADE HERE WILL BE LOST!
 #
-#   MakeMaker ARGV: (q[CC=ccache cc])
+#   MakeMaker ARGV: ()
 #
 #   MakeMaker Parameters:
 
@@ -18,7 +18,7 @@
 #     LIBS => [q[]]
 #     LICENSE => q[perl]
 #     NAME => q[Devel::LeakTrace::Fast]
-#     OBJECT => q[buffer.o hash.o list.o tools.o Fast.o]
+#     OBJECT => q[src/buffer.o src/hash.o src/list.o src/tools.o src/Fast.o]
 #     PL_FILES => {  }
 #     PREREQ_PM => { Test::More=>q[0], version=>q[0] }
 #     SIGN => q[1]
@@ -31,11 +31,11 @@
 
 # --- MakeMaker const_config section:
 
-# These definitions are from config.sh (via /System/Library/Perl/5.8.6/darwin-thread-multi-2level/Config.pm)
+# These definitions are from config.sh (via /alt/local/lib/perl5/5.10.0/darwin-thread-multi-2level/Config.pm)
 
 # They may have been overridden via Makefile.PL or on the command line
 AR = ar
-CC = ccache cc
+CC = cc
 CCCDLFLAGS =  
 CCDLFLAGS =  
 DLEXT = bundle
@@ -43,19 +43,19 @@ DLSRC = dl_dlopen.xs
 EXE_EXT = 
 FULL_AR = /usr/bin/ar
 LD = env MACOSX_DEPLOYMENT_TARGET=10.3 cc
-LDDLFLAGS = -bundle -undefined dynamic_lookup -L/usr/local/lib
-LDFLAGS = -L/usr/local/lib
+LDDLFLAGS = -Dman3ext=3pm -bundle -undefined dynamic_lookup -L/usr/local/lib -L/opt/local/lib
+LDFLAGS = -Dman3ext=3pm -L/usr/local/lib -L/opt/local/lib
 LIBC = /usr/lib/libc.dylib
 LIB_EXT = .a
 OBJ_EXT = .o
 OSNAME = darwin
-OSVERS = 8.0
-RANLIB = /usr/bin/ar ts
-SITELIBEXP = /Library/Perl/5.8.6
-SITEARCHEXP = /Library/Perl/5.8.6/darwin-thread-multi-2level
+OSVERS = 9.1.0
+RANLIB = ranlib
+SITELIBEXP = /alt/local/lib/perl5/site_perl/5.10.0
+SITEARCHEXP = /alt/local/lib/perl5/site_perl/5.10.0/darwin-thread-multi-2level
 SO = dylib
-VENDORARCHEXP = /Network/Library/Perl/5.8.6/darwin-thread-multi-2level
-VENDORLIBEXP = /Network/Library/Perl/5.8.6
+VENDORARCHEXP = 
+VENDORLIBEXP = 
 
 
 # --- MakeMaker constants section:
@@ -78,59 +78,59 @@ INST_LIB = blib/lib
 INST_MAN1DIR = blib/man1
 INST_MAN3DIR = blib/man3
 MAN1EXT = 1
-MAN3EXT = 3pm
+MAN3EXT = 3
 INSTALLDIRS = site
 DESTDIR = 
 PREFIX = $(SITEPREFIX)
-PERLPREFIX = /
-SITEPREFIX = /usr/local
-VENDORPREFIX = /usr/local
-INSTALLPRIVLIB = /System/Library/Perl/5.8.6
+PERLPREFIX = /alt/local
+SITEPREFIX = /alt/local
+VENDORPREFIX = 
+INSTALLPRIVLIB = /alt/local/lib/perl5/5.10.0
 DESTINSTALLPRIVLIB = $(DESTDIR)$(INSTALLPRIVLIB)
-INSTALLSITELIB = /Library/Perl/5.8.6
+INSTALLSITELIB = /alt/local/lib/perl5/site_perl/5.10.0
 DESTINSTALLSITELIB = $(DESTDIR)$(INSTALLSITELIB)
-INSTALLVENDORLIB = /Network/Library/Perl/5.8.6
+INSTALLVENDORLIB = 
 DESTINSTALLVENDORLIB = $(DESTDIR)$(INSTALLVENDORLIB)
-INSTALLARCHLIB = /System/Library/Perl/5.8.6/darwin-thread-multi-2level
+INSTALLARCHLIB = /alt/local/lib/perl5/5.10.0/darwin-thread-multi-2level
 DESTINSTALLARCHLIB = $(DESTDIR)$(INSTALLARCHLIB)
-INSTALLSITEARCH = /Library/Perl/5.8.6/darwin-thread-multi-2level
+INSTALLSITEARCH = /alt/local/lib/perl5/site_perl/5.10.0/darwin-thread-multi-2level
 DESTINSTALLSITEARCH = $(DESTDIR)$(INSTALLSITEARCH)
-INSTALLVENDORARCH = /Network/Library/Perl/5.8.6/darwin-thread-multi-2level
+INSTALLVENDORARCH = 
 DESTINSTALLVENDORARCH = $(DESTDIR)$(INSTALLVENDORARCH)
-INSTALLBIN = /usr/bin
+INSTALLBIN = /alt/local/bin
 DESTINSTALLBIN = $(DESTDIR)$(INSTALLBIN)
-INSTALLSITEBIN = /usr/local/bin
+INSTALLSITEBIN = /alt/local/bin
 DESTINSTALLSITEBIN = $(DESTDIR)$(INSTALLSITEBIN)
-INSTALLVENDORBIN = /usr/local/bin
+INSTALLVENDORBIN = 
 DESTINSTALLVENDORBIN = $(DESTDIR)$(INSTALLVENDORBIN)
-INSTALLSCRIPT = /usr/bin
+INSTALLSCRIPT = /alt/local/bin
 DESTINSTALLSCRIPT = $(DESTDIR)$(INSTALLSCRIPT)
-INSTALLSITESCRIPT = /usr/local/bin
+INSTALLSITESCRIPT = /alt/local/bin
 DESTINSTALLSITESCRIPT = $(DESTDIR)$(INSTALLSITESCRIPT)
-INSTALLVENDORSCRIPT = /usr/local/bin
+INSTALLVENDORSCRIPT = 
 DESTINSTALLVENDORSCRIPT = $(DESTDIR)$(INSTALLVENDORSCRIPT)
-INSTALLMAN1DIR = /usr/share/man/man1
+INSTALLMAN1DIR = /alt/local/share/man/man1
 DESTINSTALLMAN1DIR = $(DESTDIR)$(INSTALLMAN1DIR)
-INSTALLSITEMAN1DIR = /usr/local/man/man1
+INSTALLSITEMAN1DIR = /alt/local/share/man/man1
 DESTINSTALLSITEMAN1DIR = $(DESTDIR)$(INSTALLSITEMAN1DIR)
-INSTALLVENDORMAN1DIR = /usr/local/man/man1
+INSTALLVENDORMAN1DIR = 
 DESTINSTALLVENDORMAN1DIR = $(DESTDIR)$(INSTALLVENDORMAN1DIR)
-INSTALLMAN3DIR = /usr/share/man/man3
+INSTALLMAN3DIR = /alt/local/share/man/man3
 DESTINSTALLMAN3DIR = $(DESTDIR)$(INSTALLMAN3DIR)
-INSTALLSITEMAN3DIR = /usr/local/man/man3
+INSTALLSITEMAN3DIR = /alt/local/share/man/man3
 DESTINSTALLSITEMAN3DIR = $(DESTDIR)$(INSTALLSITEMAN3DIR)
-INSTALLVENDORMAN3DIR = /usr/local/man/man3
+INSTALLVENDORMAN3DIR = 
 DESTINSTALLVENDORMAN3DIR = $(DESTDIR)$(INSTALLVENDORMAN3DIR)
-PERL_LIB = /System/Library/Perl/5.8.6
-PERL_ARCHLIB = /System/Library/Perl/5.8.6/darwin-thread-multi-2level
+PERL_LIB = /alt/local/lib/perl5/5.10.0
+PERL_ARCHLIB = /alt/local/lib/perl5/5.10.0/darwin-thread-multi-2level
 LIBPERL_A = libperl.a
 FIRST_MAKEFILE = Makefile
 MAKEFILE_OLD = Makefile.old
 MAKE_APERL_FILE = Makefile.aperl
 PERLMAINCC = $(CC)
-PERL_INC = /System/Library/Perl/5.8.6/darwin-thread-multi-2level/CORE
-PERL = /usr/bin/perl
-FULLPERL = /usr/bin/perl
+PERL_INC = /alt/local/lib/perl5/5.10.0/darwin-thread-multi-2level/CORE
+PERL = /alt/local/bin/perl
+FULLPERL = /alt/local/bin/perl
 ABSPERL = $(PERL)
 PERLRUN = $(PERL)
 FULLPERLRUN = $(FULLPERL)
@@ -142,9 +142,9 @@ PERL_CORE = 0
 PERM_RW = 644
 PERM_RWX = 755
 
-MAKEMAKER   = /System/Library/Perl/5.8.6/ExtUtils/MakeMaker.pm
-MM_VERSION  = 6.32
-MM_REVISION = 27436
+MAKEMAKER   = /alt/local/lib/perl5/5.10.0/ExtUtils/MakeMaker.pm
+MM_VERSION  = 6.36_01
+MM_REVISION = 32261
 
 # FULLEXT = Pathname for extension directory (eg Foo/Bar/Oracle).
 # BASEEXT = Basename part of FULLEXT. May be just equal FULLEXT. (eg Oracle)
@@ -158,28 +158,16 @@ DLBASE = $(BASEEXT)
 VERSION_FROM = lib/Devel/LeakTrace/Fast.pm
 INC = -I. -Isupport
 DEFINE = 
-OBJECT = buffer$(OBJ_EXT) hash$(OBJ_EXT) list$(OBJ_EXT) tools$(OBJ_EXT) Fast$(OBJ_EXT)
+OBJECT = src/buffer$(OBJ_EXT) src/hash$(OBJ_EXT) src/list$(OBJ_EXT) src/tools$(OBJ_EXT) src/Fast$(OBJ_EXT)
 LDFROM = $(OBJECT)
 LINKTYPE = dynamic
 BOOTDEP = 
 
 # Handy lists of source code files:
 XS_FILES = Fast.xs
-C_FILES  = Fast.c \
-	buffer.c \
-	hash.c \
-	list.c \
-	tools.c
-O_FILES  = Fast.o \
-	buffer.o \
-	hash.o \
-	list.o \
-	tools.o
-H_FILES  = buffer.h \
-	common.h \
-	hash.h \
-	list.h \
-	tools.h
+C_FILES  = Fast.c
+O_FILES  = Fast.o
+H_FILES  = 
 MAN1PODS = 
 MAN3PODS = lib/Devel/LeakTrace/Fast.pm
 
@@ -210,7 +198,7 @@ PM_TO_BLIB = lib/Devel/LeakTrace/Fast.pm \
 
 
 # --- MakeMaker platform_constants section:
-MM_Unix_VERSION = 1.52
+MM_Unix_VERSION = 1.54_02
 PERL_MALLOC_DEF = -DPERL_EXTMALLOC_DEF -Dmalloc=Perl_malloc -Dfree=Perl_mfree -Drealloc=Perl_realloc -Dcalloc=Perl_calloc
 
 
@@ -222,12 +210,12 @@ AUTOSPLITFILE = $(ABSPERLRUN)  -e 'use AutoSplit;  autosplit($$ARGV[0], $$ARGV[1
 
 # --- MakeMaker tool_xsubpp section:
 
-XSUBPPDIR = /System/Library/Perl/5.8.6/ExtUtils
+XSUBPPDIR = /alt/local/lib/perl5/5.10.0/ExtUtils
 XSUBPP = $(XSUBPPDIR)$(DFSEP)xsubpp
 XSUBPPRUN = $(PERLRUN) $(XSUBPP)
 XSPROTOARG = 
-XSUBPPDEPS = /System/Library/Perl/5.8.6/ExtUtils/typemap $(XSUBPP)
-XSUBPPARGS = -typemap /System/Library/Perl/5.8.6/ExtUtils/typemap
+XSUBPPDEPS = /alt/local/lib/perl5/5.10.0/ExtUtils/typemap $(XSUBPP)
+XSUBPPARGS = -typemap /alt/local/lib/perl5/5.10.0/ExtUtils/typemap
 XSUBPP_EXTRA_ARGS = 
 
 
@@ -293,7 +281,7 @@ DISTVNAME = Devel-LeakTrace-Fast-0.0.3
 # --- MakeMaker cflags section:
 
 CCFLAGS = -Wall
-OPTIMIZE = -Os
+OPTIMIZE = -O3
 PERLTYPE = 
 MPOLLUTE = 
 
@@ -384,8 +372,6 @@ subdirs :: $(MYEXTLIB)
 
 config :: $(FIRST_MAKEFILE) blibdirs
 	$(NOECHO) $(NOOP)
-
-$(O_FILES): $(H_FILES)
 
 help :
 	perldoc ExtUtils::MakeMaker
@@ -589,7 +575,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) 'version:             0.0.3' >> META_new.yml
 	$(NOECHO) $(ECHO) 'abstract:            indicate where leaked variables are coming from.' >> META_new.yml
 	$(NOECHO) $(ECHO) 'license:             perl' >> META_new.yml
-	$(NOECHO) $(ECHO) 'generated_by:        ExtUtils::MakeMaker version 6.32' >> META_new.yml
+	$(NOECHO) $(ECHO) 'generated_by:        ExtUtils::MakeMaker version 6.36_01' >> META_new.yml
 	$(NOECHO) $(ECHO) 'distribution_type:   module' >> META_new.yml
 	$(NOECHO) $(ECHO) 'requires:     ' >> META_new.yml
 	$(NOECHO) $(ECHO) '    Test::More:                    0' >> META_new.yml
@@ -621,7 +607,7 @@ manifest :
 	$(PERLRUN) "-MExtUtils::Manifest=mkmanifest" -e mkmanifest
 
 veryclean : realclean
-	$(RM_F) *~ *.orig */*~ */*.orig
+	$(RM_F) *~ */*~ *.orig */*.orig *.bak */*.bak *.old */*.old 
 
 
 
@@ -674,7 +660,7 @@ distdir : create_distdir distmeta distsignature
 
 # --- MakeMaker dist_test section:
 disttest : distdir
-	cd $(DISTVNAME) && $(ABSPERLRUN) Makefile.PL "CC=ccache cc"
+	cd $(DISTVNAME) && $(ABSPERLRUN) Makefile.PL 
 	cd $(DISTVNAME) && $(MAKE) $(PASTHRU)
 	cd $(DISTVNAME) && $(MAKE) test $(PASTHRU)
 
@@ -863,7 +849,6 @@ PERL_HDRS = \
 	$(PERL_INC)/regnodes.h		\
 	$(PERL_INC)/scope.h		\
 	$(PERL_INC)/sv.h		\
-	$(PERL_INC)/thrdvar.h		\
 	$(PERL_INC)/thread.h		\
 	$(PERL_INC)/unixish.h		\
 	$(PERL_INC)/util.h
@@ -885,7 +870,7 @@ $(FIRST_MAKEFILE) : Makefile.PL $(CONFIGDEP)
 	-$(NOECHO) $(RM_F) $(MAKEFILE_OLD)
 	-$(NOECHO) $(MV)   $(FIRST_MAKEFILE) $(MAKEFILE_OLD)
 	- $(MAKE) $(USEMAKEFILE) $(MAKEFILE_OLD) clean $(DEV_NULL)
-	$(PERLRUN) Makefile.PL "CC=ccache cc"
+	$(PERLRUN) Makefile.PL 
 	$(NOECHO) $(ECHO) "==> Your Makefile has been rebuilt. <=="
 	$(NOECHO) $(ECHO) "==> Please rerun the $(MAKE) command.  <=="
 	false
@@ -896,7 +881,7 @@ $(FIRST_MAKEFILE) : Makefile.PL $(CONFIGDEP)
 
 # --- MakeMaker makeaperl section ---
 MAP_TARGET    = perl
-FULLPERL      = /usr/bin/perl
+FULLPERL      = /alt/local/bin/perl
 
 $(MAP_TARGET) :: static $(MAKE_APERL_FILE)
 	$(MAKE) $(USEMAKEFILE) $(MAKE_APERL_FILE) $@
@@ -906,8 +891,7 @@ $(MAKE_APERL_FILE) : $(FIRST_MAKEFILE) pm_to_blib
 	$(NOECHO) $(PERLRUNINST) \
 		Makefile.PL DIR= \
 		MAKEFILE=$(MAKE_APERL_FILE) LINKTYPE=static \
-		MAKEAPERL=1 NORECURS=1 CCCDLFLAGS= \
-		CC='ccache cc'
+		MAKEAPERL=1 NORECURS=1 CCCDLFLAGS=
 
 
 # --- MakeMaker test section:
@@ -920,7 +904,11 @@ TESTDB_SW = -d
 
 testdb :: testdb_$(LINKTYPE)
 
-test :: $(TEST_TYPE)
+test :: $(TEST_TYPE) subdirs-test
+
+subdirs-test ::
+	$(NOECHO) $(NOOP)
+
 
 test_dynamic :: pure_all
 	PERL_DL_NONLAZY=1 $(FULLPERLRUN) "-MExtUtils::Command::MM" "-e" "test_harness($(TEST_VERBOSE), '$(INST_LIB)', '$(INST_ARCHLIB)')" $(TEST_FILES)
@@ -949,7 +937,7 @@ ppd:
 	$(NOECHO) $(ECHO) '        <DEPENDENCY NAME="Test-More" VERSION="0,0,0,0" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <DEPENDENCY NAME="version" VERSION="0,0,0,0" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <OS NAME="$(OSNAME)" />' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="darwin-thread-multi-2level-5.8" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="darwin-thread-multi-2level-5.1" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <CODEBASE HREF="" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    </IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '</SOFTPKG>' >> $(DISTNAME).ppd

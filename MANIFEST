@@ -13,8 +13,8 @@ MANIFEST
 README
 t/00.load.t
 t/01.basic.t
-t/pod-coverage.t
-t/pod.t
 TODO
 tools.c
 tools.h
+xt/author/pod-coverage.t
+xt/author/pod.t
