@@ -13,7 +13,6 @@ my %args = (
     PL_FILES      => {},
     PREREQ_PM     => {
         'Test::More' => 0,
-        'version'    => 0,
     },
     LIBS   => [''],
     DEFINE => '',

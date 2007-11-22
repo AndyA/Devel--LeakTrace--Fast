@@ -12,3 +12,8 @@ Revision history for Devel-LeakTrace-Fast
 
 0.10    2007-11-22
         Move author tests to xt/author
+
+0.11    2007-11-22
+        More tidying.
+        Actually removed version.pm dep.
+

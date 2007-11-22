@@ -34,32 +34,32 @@ typedef buffer list;
     (buffer_size(l) / list_ISZ)
 #define list_delete(l) \
     buffer_delete(l)
-    
+
 /* Get pointer to list array */
 #define list_ar(l) \
     ((list_ITY *)(l)->buf)
 
-typedef void (*list_callback)(list_ITY v, const void *p);
+typedef void ( *list_callback ) ( list_ITY v, const void *p );
 
-int list_append(list *l, const list_ITY p);
-    
+int list_append( list * l, const list_ITY p );
+
 /* Return the location of the first difference between two lists
  * scanning from the end. The value returned is the offset from
  * the end of each list (i.e. -1 .. -(list size)) of the first
  * difference or 0 if the lists are the same.
  */
- 
-#if 0
-long list_cmp(const list *a, const list *b);
 
-void list_diff(const list *a, const list *b, 
- 			   const void *p,
-			   list_callback added, list_callback removed);
+#if 0
+long list_cmp( const list * a, const list * b );
+
+void list_diff( const list * a, const list * b,
+                const void *p,
+                list_callback added, list_callback removed );
 #endif
 
-int list_build(list *l, const list_ITY v, size_t sz);
-void list_sort(list *l);
-long list_true_diff(list *a, list *b, const void *p,
-			        list_callback added, list_callback removed);
+int list_build( list * l, const list_ITY v, size_t sz );
+void list_sort( list * l );
+long list_true_diff( list * a, list * b, const void *p,
+                     list_callback added, list_callback removed );
 
-#endif /* __LIST_H */
+#endif                          /* __LIST_H */
