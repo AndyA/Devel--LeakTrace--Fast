@@ -13,7 +13,8 @@ int buffer_init( buffer * b, size_t initsize, size_t growby ) {
         if ( b->buf = malloc( initsize ), !b->buf ) {
             return ERR_Not_Enough_Memory;
         }
-    } else {
+    }
+    else {
         b->buf = NULL;
     }
     b->size = initsize;

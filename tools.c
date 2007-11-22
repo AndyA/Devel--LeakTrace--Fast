@@ -134,7 +134,8 @@ static void new_arena( SV * sva, const void *p ) {
         if ( live_sv( sv ) ) {
             /* New variable */
             new_var( sv, w );
-        } else {
+        }
+        else {
             /* Pretend any new free SVs were already in the free list otherwise
              * when we compare the new free list with the old one it'll look as
              * if lots of variables that never existed have been freed.
@@ -292,7 +293,8 @@ static void brute_force( int line, const char *file ) {
                     const where *ow;
                     if ( ( ow = hash_get( brute, &sv, sizeof( sv ) ) ) ) {
                         nw = hash_GETNULL( ow );
-                    } else {
+                    }
+                    else {
                         if ( w ) {
                             fprintf( stderr,
                                      "%s, line %d: New var (bf): %p\n",

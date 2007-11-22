@@ -339,7 +339,8 @@ int hash_put( hash * h, const void *key, size_t key_len, void *val ) {
         if ( ( int )h->size > h->cap * 5 ) {
             return _rehash( h );
         }
-    } else {
+    }
+    else {
         /* Replace an existing entry.
          */
         sl = ( hash_slot * ) ( ( char * )h->buf.buf + s );
@@ -357,7 +358,8 @@ int hash_put( hash * h, const void *key, size_t key_len, void *val ) {
                     sl->v = NULL;
                     return err;
                 }
-            } else {
+            }
+            else {
                 if ( h->cb_del ) {
                     if ( err =
                          h->cb_del( h, h->cbd, sl->v ), ERR_None != err ) {
@@ -386,7 +388,8 @@ void *hash_get( hash * h, const void *key, size_t key_len ) {
 
     if ( s == -1 ) {
         return NULL;
-    } else {
+    }
+    else {
         hash_slot *sl = ( hash_slot * ) ( ( char * )h->buf.buf + s );
         return sl->v;
     }
