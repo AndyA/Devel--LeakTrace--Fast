@@ -78,3 +78,5 @@ modify it under the same terms as Perl itself. See L<perlartistic>.
 L<Devel::Leak>, L<Devel::Cover>
 
 =cut
+/bin/bash: -c: line 18: unexpected EOF while looking for matching ``'
+/bin/bash: -c: line 35: syntax error: unexpected end of file

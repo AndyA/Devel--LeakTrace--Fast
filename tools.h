@@ -11,8 +11,8 @@
 #include "hash.h"
 #include "list.h"
 
-void tools_show_used(void);
-void tools_reset_counters(void);
-void tools_hook_runops(void);
+void tools_show_used( void );
+void tools_reset_counters( void );
+void tools_hook_runops( void );
 
-#endif /* __TOOLS_H */
+#endif                          /* __TOOLS_H */

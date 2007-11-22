@@ -16,72 +16,76 @@
 
 #line 18 "Fast.c"
 
-XS(XS_Devel__LeakTrace__Fast__hook_runops); /* prototype to pass -Wmissing-prototypes */
-XS(XS_Devel__LeakTrace__Fast__hook_runops)
+XS( XS_Devel__LeakTrace__Fast__hook_runops );   /* prototype to pass -Wmissing-prototypes */
+XS( XS_Devel__LeakTrace__Fast__hook_runops )
 {
 #ifdef dVAR
-    dVAR; dXSARGS;
+    dVAR;
+    dXSARGS;
 #else
     dXSARGS;
 #endif
-    if (items != 0)
-       Perl_croak(aTHX_ "Usage: %s(%s)", "Devel::LeakTrace::Fast::_hook_runops", "");
-    PERL_UNUSED_VAR(cv); /* -W */
-    PERL_UNUSED_VAR(ax); /* -Wall */
+    if ( items != 0 )
+        Perl_croak( aTHX_ "Usage: %s(%s)",
+                    "Devel::LeakTrace::Fast::_hook_runops", "" );
+    PERL_UNUSED_VAR( cv );      /* -W */
+    PERL_UNUSED_VAR( ax );      /* -Wall */
     SP -= items;
     {
 #line 11 "Fast.xs"
-{
-    tools_hook_runops();
-}
+        {
+            tools_hook_runops(  );
+        }
 #line 38 "Fast.c"
-	PUTBACK;
-	return;
+        PUTBACK;
+        return;
     }
 }
 
-
-XS(XS_Devel__LeakTrace__Fast__reset_counters); /* prototype to pass -Wmissing-prototypes */
-XS(XS_Devel__LeakTrace__Fast__reset_counters)
+XS( XS_Devel__LeakTrace__Fast__reset_counters );        /* prototype to pass -Wmissing-prototypes */
+XS( XS_Devel__LeakTrace__Fast__reset_counters )
 {
 #ifdef dVAR
-    dVAR; dXSARGS;
+    dVAR;
+    dXSARGS;
 #else
     dXSARGS;
 #endif
-    if (items != 0)
-       Perl_croak(aTHX_ "Usage: %s(%s)", "Devel::LeakTrace::Fast::_reset_counters", "");
-    PERL_UNUSED_VAR(cv); /* -W */
-    PERL_UNUSED_VAR(ax); /* -Wall */
+    if ( items != 0 )
+        Perl_croak( aTHX_ "Usage: %s(%s)",
+                    "Devel::LeakTrace::Fast::_reset_counters", "" );
+    PERL_UNUSED_VAR( cv );      /* -W */
+    PERL_UNUSED_VAR( ax );      /* -Wall */
     SP -= items;
     {
 #line 18 "Fast.xs"
-{
-    tools_reset_counters();
-}
+        {
+            tools_reset_counters(  );
+        }
 #line 63 "Fast.c"
-	PUTBACK;
-	return;
+        PUTBACK;
+        return;
     }
 }
 
-
-XS(XS_Devel__LeakTrace__Fast__show_used); /* prototype to pass -Wmissing-prototypes */
-XS(XS_Devel__LeakTrace__Fast__show_used)
+XS( XS_Devel__LeakTrace__Fast__show_used );     /* prototype to pass -Wmissing-prototypes */
+XS( XS_Devel__LeakTrace__Fast__show_used )
 {
 #ifdef dVAR
-    dVAR; dXSARGS;
+    dVAR;
+    dXSARGS;
 #else
     dXSARGS;
 #endif
-    if (items != 0)
-       Perl_croak(aTHX_ "Usage: %s(%s)", "Devel::LeakTrace::Fast::_show_used", "");
-    PERL_UNUSED_VAR(cv); /* -W */
+    if ( items != 0 )
+        Perl_croak( aTHX_ "Usage: %s(%s)",
+                    "Devel::LeakTrace::Fast::_show_used", "" );
+    PERL_UNUSED_VAR( cv );      /* -W */
     {
 #line 25 "Fast.xs"
-{
-    tools_show_used();
-}
+        {
+            tools_show_used(  );
+        }
 #line 86 "Fast.c"
     }
     XSRETURN_EMPTY;
@@ -90,25 +94,28 @@ XS(XS_Devel__LeakTrace__Fast__show_used)
 #ifdef __cplusplus
 extern "C"
 #endif
-XS(boot_Devel__LeakTrace__Fast); /* prototype to pass -Wmissing-prototypes */
-XS(boot_Devel__LeakTrace__Fast)
+ XS( boot_Devel__LeakTrace__Fast );     /* prototype to pass -Wmissing-prototypes */
+XS( boot_Devel__LeakTrace__Fast )
 {
 #ifdef dVAR
-    dVAR; dXSARGS;
+    dVAR;
+    dXSARGS;
 #else
     dXSARGS;
 #endif
-    char* file = __FILE__;
+    char *file = __FILE__;
 
-    PERL_UNUSED_VAR(cv); /* -W */
-    PERL_UNUSED_VAR(items); /* -W */
-    XS_VERSION_BOOTCHECK ;
+    PERL_UNUSED_VAR( cv );      /* -W */
+    PERL_UNUSED_VAR( items );   /* -W */
+    XS_VERSION_BOOTCHECK;
 
-        newXSproto("Devel::LeakTrace::Fast::_hook_runops", XS_Devel__LeakTrace__Fast__hook_runops, file, "");
-        newXSproto("Devel::LeakTrace::Fast::_reset_counters", XS_Devel__LeakTrace__Fast__reset_counters, file, "");
-        newXSproto("Devel::LeakTrace::Fast::_show_used", XS_Devel__LeakTrace__Fast__show_used, file, "");
-    if (PL_unitcheckav)
-         call_list(PL_scopestack_ix, PL_unitcheckav);
+    newXSproto( "Devel::LeakTrace::Fast::_hook_runops",
+                XS_Devel__LeakTrace__Fast__hook_runops, file, "" );
+    newXSproto( "Devel::LeakTrace::Fast::_reset_counters",
+                XS_Devel__LeakTrace__Fast__reset_counters, file, "" );
+    newXSproto( "Devel::LeakTrace::Fast::_show_used",
+                XS_Devel__LeakTrace__Fast__show_used, file, "" );
+    if ( PL_unitcheckav )
+        call_list( PL_scopestack_ix, PL_unitcheckav );
     XSRETURN_YES;
 }
-

@@ -19,9 +19,9 @@
 #define REPORT()     ((void) 0)
 
 enum {
-	ERR_None				= 0,
-	ERR_Not_Enough_Memory	= 1,
-	ERR_Illegal_Hash_Key	= 2,
+    ERR_None = 0,
+    ERR_Not_Enough_Memory = 1,
+    ERR_Illegal_Hash_Key = 2,
 };
 
-#endif /* __COMMON_H */
+#endif                          /* __COMMON_H */
