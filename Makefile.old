@@ -18,7 +18,7 @@
 #     LIBS => [q[]]
 #     LICENSE => q[perl]
 #     NAME => q[Devel::LeakTrace::Fast]
-#     OBJECT => q[buffer.o hash.o list.o tools.o Fast.o]
+#     OBJECT => q[src/buffer.o src/hash.o src/list.o src/tools.o src/Fast.o]
 #     PL_FILES => {  }
 #     PREREQ_PM => { Test::More=>q[0], version=>q[0] }
 #     SIGN => q[1]
@@ -158,28 +158,16 @@ DLBASE = $(BASEEXT)
 VERSION_FROM = lib/Devel/LeakTrace/Fast.pm
 INC = -I. -Isupport
 DEFINE = 
-OBJECT = buffer$(OBJ_EXT) hash$(OBJ_EXT) list$(OBJ_EXT) tools$(OBJ_EXT) Fast$(OBJ_EXT)
+OBJECT = src/buffer$(OBJ_EXT) src/hash$(OBJ_EXT) src/list$(OBJ_EXT) src/tools$(OBJ_EXT) src/Fast$(OBJ_EXT)
 LDFROM = $(OBJECT)
 LINKTYPE = dynamic
 BOOTDEP = 
 
 # Handy lists of source code files:
 XS_FILES = Fast.xs
-C_FILES  = Fast.c \
-	buffer.c \
-	hash.c \
-	list.c \
-	tools.c
-O_FILES  = Fast.o \
-	buffer.o \
-	hash.o \
-	list.o \
-	tools.o
-H_FILES  = buffer.h \
-	common.h \
-	hash.h \
-	list.h \
-	tools.h
+C_FILES  = Fast.c
+O_FILES  = Fast.o
+H_FILES  = 
 MAN1PODS = 
 MAN3PODS = lib/Devel/LeakTrace/Fast.pm
 
@@ -384,8 +372,6 @@ subdirs :: $(MYEXTLIB)
 
 config :: $(FIRST_MAKEFILE) blibdirs
 	$(NOECHO) $(NOOP)
-
-$(O_FILES): $(H_FILES)
 
 help :
 	perldoc ExtUtils::MakeMaker

@@ -18,7 +18,7 @@ my %args = (
     LIBS   => [''],
     DEFINE => '',
     INC    => '-I. -Isupport',
-    OBJECT => 'src/buffer.o src/hash.o src/list.o src/tools.o src/Fast.o',
+    OBJECT => 'buffer.o hash.o list.o tools.o Fast.o',
 
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean => { FILES    => 'Devel-LeakTrace-Fast-*' },
