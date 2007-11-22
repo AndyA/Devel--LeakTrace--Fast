@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>hash.c</string>
+	<string>Changes</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -28,7 +28,7 @@
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>14</integer>
+				<integer>18</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -106,6 +106,20 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>91</integer>
+		</dict>
+		<key>Makefile.PL</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>15</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>README</key>
 		<dict>
@@ -269,6 +283,7 @@
 		<string>Fast.xs</string>
 		<string>Changes</string>
 		<string>hash.c</string>
+		<string>Makefile.PL</string>
 		<string>buffer.c</string>
 		<string>tools.c</string>
 		<string>buffer.h</string>
