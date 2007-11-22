@@ -219,8 +219,8 @@ static int _rehash( hash * h ) {
      */
     key = hash_get_first_key( h, &i, &key_len );
     while ( key ) {
-        if ( err = hash_put( nh, key, key_len,
-                             hash_get( h, key, key_len ) ),
+        if ( err =
+             hash_put( nh, key, key_len, hash_get( h, key, key_len ) ),
              ERR_None != err ) {
             hash_delete( nh );
             return err;
