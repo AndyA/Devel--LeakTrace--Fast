@@ -17,6 +17,7 @@ void *hash_NULL = "[hash null]";
 /* #define INSTRUMENT */
 #ifdef INSTRUMENT
 #include <stdio.h>
+
 static struct {
     long n_new;
     long n_delete;
@@ -29,8 +30,7 @@ static struct {
     long n_find;
 } _stats;
 
-static void _inst_dump( void )
-{
+static void _inst_dump( void ) {
     fprintf( stderr, "       hash_new(): %10ld\n", _stats.n_new );
     fprintf( stderr, "    hash_delete(): %10ld\n", _stats.n_delete );
     fprintf( stderr, "hash_delete_key(): %10ld\n", _stats.n_delete_key );
@@ -42,8 +42,7 @@ static void _inst_dump( void )
     fprintf( stderr, "          _find(): %10ld\n", _stats.n_find );
 }
 
-static void _inst_init( void )
-{
+static void _inst_init( void ) {
     static int init_done = 0;
     if ( !init_done ) {
         atexit( _inst_dump );
@@ -66,8 +65,7 @@ static int _init_done = 0;
 #define EQKEY(sl, key, key_len) \
     ((sl)->key_len == key_len && memcmp(KEY(sl), key, key_len) == 0)
 
-int hash_new( long capacity, hash ** hh )
-{
+int hash_new( long capacity, hash ** hh ) {
     hash *h;
     int err;
     long s;
@@ -113,8 +111,7 @@ int hash_set_callbacks( hash * h, void *cbd,
                         int ( *cb_add ) ( hash * h, void *d, void **v ),
                         int ( *cb_del ) ( hash * h, void *d, void *v ),
                         int ( *cb_upd ) ( hash * h, void *d, void *ov,
-                                          void **nv ) )
-{
+                                          void **nv ) ) {
     h->cbd = cbd;
     h->cb_add = cb_add;
     h->cb_del = cb_del;
@@ -123,8 +120,7 @@ int hash_set_callbacks( hash * h, void *cbd,
     return ERR_None;
 }
 
-int hash_delete( hash * h )
-{
+int hash_delete( hash * h ) {
     INST_I( delete );
 
     if ( !h ) {
@@ -156,8 +152,7 @@ int hash_delete( hash * h )
 }
 
 /* Compute the hash for a key */
-static unsigned long _hash( const void *k, size_t kl )
-{
+static unsigned long _hash( const void *k, size_t kl ) {
     unsigned long h = 0;
     const unsigned char *kp = k;
     INST_I( hash );
@@ -168,8 +163,7 @@ static unsigned long _hash( const void *k, size_t kl )
 }
 
 static long _find( hash * h, const void *key, size_t key_len,
-                   unsigned long hc )
-{
+                   unsigned long hc ) {
     long s = h->slot[hc % h->cap];
     INST_I( find );
     while ( -1 != s ) {
@@ -198,8 +192,7 @@ static long _find( hash * h, const void *key, size_t key_len,
  * Bear that in mind if you decide to tinker with the code. A recursive rehash
  * shouldn't break anything but it's clearly a bit daft.
  */
-static int _rehash( hash * h )
-{
+static int _rehash( hash * h ) {
     const void *key;
     size_t key_len;
     hash *nh;
@@ -261,8 +254,7 @@ static int _rehash( hash * h )
     return ERR_None;
 }
 
-int hash_delete_key( hash * h, const void *key, size_t key_len )
-{
+int hash_delete_key( hash * h, const void *key, size_t key_len ) {
     unsigned int hc = _hash( key, key_len );
     long *sp = &h->slot[hc % h->cap];
     long s = *sp;
@@ -301,8 +293,7 @@ int hash_delete_key( hash * h, const void *key, size_t key_len )
  * but the value is treated as an opaque pointer so the life of the pointed-to
  * object must match the life of the hash.
  */
-int hash_put( hash * h, const void *key, size_t key_len, void *val )
-{
+int hash_put( hash * h, const void *key, size_t key_len, void *val ) {
     unsigned int hc = _hash( key, key_len );
     hash_slot *sl;
     int err;
@@ -389,8 +380,7 @@ int hash_put( hash * h, const void *key, size_t key_len, void *val )
     return ERR_None;
 }
 
-void *hash_get( hash * h, const void *key, size_t key_len )
-{
+void *hash_get( hash * h, const void *key, size_t key_len ) {
     long s = _find( h, key, key_len, _hash( key, key_len ) );
     INST_I( get );
 
@@ -402,21 +392,18 @@ void *hash_get( hash * h, const void *key, size_t key_len )
     }
 }
 
-size_t hash_size( hash * h )
-{
+size_t hash_size( hash * h ) {
     return h->size;
 }
 
-const void *hash_get_first_key( hash * h, hash_iter * i, size_t * key_len )
-{
+const void *hash_get_first_key( hash * h, hash_iter * i, size_t * key_len ) {
     i->state = h->state;
     i->bucket = 0;
     i->sl = h->slot[i->bucket];
     return hash_get_next_key( h, i, key_len );
 }
 
-const void *hash_get_next_key( hash * h, hash_iter * i, size_t * key_len )
-{
+const void *hash_get_next_key( hash * h, hash_iter * i, size_t * key_len ) {
     const void *key;
     hash_slot *sl;
 

@@ -8,8 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int buffer_init( buffer * b, size_t initsize, size_t growby )
-{
+int buffer_init( buffer * b, size_t initsize, size_t growby ) {
     if ( initsize > 0 ) {
         if ( b->buf = malloc( initsize ), !b->buf ) {
             return ERR_Not_Enough_Memory;
@@ -25,8 +24,7 @@ int buffer_init( buffer * b, size_t initsize, size_t growby )
     return ERR_None;
 }
 
-int buffer_delete( buffer * b )
-{
+int buffer_delete( buffer * b ) {
     free( b->buf );
 
     b->buf = NULL;
@@ -38,8 +36,7 @@ int buffer_delete( buffer * b )
     return ERR_None;
 }
 
-int buffer_ensure( buffer * b, size_t minsize )
-{
+int buffer_ensure( buffer * b, size_t minsize ) {
     if ( b->size < minsize ) {
         size_t nsize = NMAX( b->size + b->growby, minsize );
         /* Could realloc here but malloc() / free() works better
@@ -59,13 +56,11 @@ int buffer_ensure( buffer * b, size_t minsize )
     return ERR_None;
 }
 
-int buffer_ensure_free( buffer * b, size_t minfree )
-{
+int buffer_ensure_free( buffer * b, size_t minfree ) {
     return buffer_ensure( b, b->used + minfree );
 }
 
-int buffer_append( buffer * b, const void *m, size_t len )
-{
+int buffer_append( buffer * b, const void *m, size_t len ) {
     int err;
 
     if ( err = buffer_ensure_free( b, len ), ERR_None != err ) {
@@ -77,8 +72,7 @@ int buffer_append( buffer * b, const void *m, size_t len )
     return ERR_None;
 }
 
-int buffer_set_used( buffer * b, size_t used )
-{
+int buffer_set_used( buffer * b, size_t used ) {
     int err;
 
     if ( used > b->used ) {

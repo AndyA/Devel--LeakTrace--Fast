@@ -36,14 +36,12 @@ static hash *brute = NULL;
      (o) == OP_DBSTATE   || \
      (o) == OP_SETSTATE)
 
-static void nomem( void )
-{
+static void nomem( void ) {
     fprintf( stderr, "Devel::LeakTrace::Fast: Out of memory\n" );
     exit( 1 );
 }
 
-static const where *get_where( int line, const char *file )
-{
+static const where *get_where( int line, const char *file ) {
     static int init_done = 0;
     static hash *cache = NULL;
     static buffer work;
@@ -93,8 +91,7 @@ static const where *get_where( int line, const char *file )
     return w;
 }
 
-static void new_var( SV * sv, const void *p )
-{
+static void new_var( SV * sv, const void *p ) {
     int err;
     const where *w = p;
 
@@ -111,8 +108,7 @@ static void new_var( SV * sv, const void *p )
     }
 }
 
-static void free_var( SV * sv, const void *p )
-{
+static void free_var( SV * sv, const void *p ) {
     int err;
 
 /*    fprintf(stderr, "%s, line %d: Free var: %p\n", (const char *) (w + 1), w->line, sv);*/
@@ -127,8 +123,7 @@ static void free_var( SV * sv, const void *p )
     }
 }
 
-static void new_arena( SV * sva, const void *p )
-{
+static void new_arena( SV * sva, const void *p ) {
     const where *w = p;
     int err;
     /*fprintf(stderr, "%s, line %d: New arena: %p\n", (const char *) (w + 1), w->line, sva); */
@@ -153,8 +148,7 @@ static void new_arena( SV * sva, const void *p )
     /*fprintf(stderr, "%s, line %d: End new arena: %p\n", (const char *) (w + 1), w->line, sva); */
 }
 
-static void free_arena( SV * sva, const void *p )
-{
+static void free_arena( SV * sva, const void *p ) {
     const where *w = p;
     fprintf( stderr, "%s, line %d: Free arena: %p\n",
              ( const char * )( w + 1 ), w->line, sva );
@@ -163,19 +157,16 @@ static void free_arena( SV * sva, const void *p )
 }
 
 #ifdef SANITY
-static void in_free_only( SV * sv, const void *p )
-{
+static void in_free_only( SV * sv, const void *p ) {
     fprintf( stderr, "%p is in free list but not arenas", sv );
 }
 
-static void in_comp_only( SV * sv, const void *p )
-{
+static void in_comp_only( SV * sv, const void *p ) {
     fprintf( stderr, "%p is in arenas but not free list", sv );
 }
 
 /* Sanity check - compare the free list with the list of free SVs in the arenas */
-static void free_list_sane( void )
-{
+static void free_list_sane( void ) {
     list real_free;
     list comp_free;
     int err;
@@ -225,8 +216,7 @@ static void free_list_sane( void )
 }
 #endif
 
-static void note_new_vars( int line, const char *file )
-{
+static void note_new_vars( int line, const char *file ) {
     list new_arenas;
     list new_free;
     int err;
@@ -276,8 +266,7 @@ static void note_new_vars( int line, const char *file )
 }
 
 #ifdef BRUTE_FORCE
-static void brute_force( int line, const char *file )
-{
+static void brute_force( int line, const char *file ) {
     SV *sva;
     hash *baby;
     const where *w;
@@ -340,8 +329,7 @@ static void brute_force( int line, const char *file )
 
 #endif
 
-static int runops_leakcheck( pTHX )
-{
+static int runops_leakcheck( pTHX ) {
     char *lastfile = NULL;
     int lastline = 0;
 
@@ -363,8 +351,7 @@ static int runops_leakcheck( pTHX )
     return 0;
 }
 
-void tools_reset_counters( void )
-{
+void tools_reset_counters( void ) {
     int err;
 
     hash_delete( var_map );
@@ -389,8 +376,7 @@ void tools_reset_counters( void )
 #endif
 }
 
-void tools_hook_runops( void )
-{
+void tools_hook_runops( void ) {
     tools_reset_counters(  );
     /*note_new_vars(0, NULL); */
     /*brute_force(0, NULL); */
@@ -400,8 +386,7 @@ void tools_hook_runops( void )
     }
 }
 
-static void print_var( SV * sv, const where * w )
-{
+static void print_var( SV * sv, const where * w ) {
     char *type;
 
     if ( !w && var_map ) {
@@ -433,8 +418,7 @@ static void print_var( SV * sv, const where * w )
              type, sv, ( const char * )( w + 1 ), w->line );
 }
 
-void tools_show_used( void )
-{
+void tools_show_used( void ) {
 /*  SV *sva; */
     hash_iter i;
     const void *k;

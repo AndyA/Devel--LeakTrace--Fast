@@ -5,14 +5,12 @@
 
 #define list_SORTED		(1 << 0)
 
-int list_append( list * l, const list_ITY p )
-{
+int list_append( list * l, const list_ITY p ) {
     l->flags &= ~list_SORTED;
     return buffer_append( l, &p, sizeof( p ) );
 }
 
-int list_build( list * l, const list_ITY v, size_t sz )
-{
+int list_build( list * l, const list_ITY v, size_t sz ) {
     int err;
 
     if ( err = list_init( l, sz ), ERR_None != err ) {
@@ -28,13 +26,11 @@ int list_build( list * l, const list_ITY v, size_t sz )
     return ERR_None;
 }
 
-static int list_compare( const void *a, const void *b )
-{
+static int list_compare( const void *a, const void *b ) {
     return list_CMP( a, b );
 }
 
-void list_sort( list * l )
-{
+void list_sort( list * l ) {
     if ( ( l->flags & list_SORTED ) == 0 ) {
         qsort( l->buf, list_used( l ), list_ISZ, list_compare );
         l->flags |= list_SORTED;
@@ -42,8 +38,7 @@ void list_sort( list * l )
 }
 
 long list_true_diff( list * a, list * b, const void *p,
-                     list_callback added, list_callback removed )
-{
+                     list_callback added, list_callback removed ) {
     list_ITY *a_ar;
     list_ITY *b_ar;
     long a_p, b_p, diff;
