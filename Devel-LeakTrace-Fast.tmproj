@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>lib/Devel/LeakTrace/Fast.pm</string>
+	<string>tools.c</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -252,14 +252,30 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>15</integer>
 				<key>line</key>
-				<integer>35</integer>
+				<integer>384</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>150</integer>
+			<integer>355</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>9</integer>
+				<key>line</key>
+				<integer>384</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>18</integer>
+				<key>line</key>
+				<integer>384</integer>
+			</dict>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
@@ -278,6 +294,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{236, 20}, {848, 853}}</string>
+	<string>{{270, 18}, {848, 853}}</string>
 </dict>
 </plist>
