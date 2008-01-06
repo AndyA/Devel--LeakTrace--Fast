@@ -36,12 +36,14 @@ static hash *brute = NULL;
      (o) == OP_DBSTATE   || \
      (o) == OP_SETSTATE)
 
-static void nomem( void ) {
+static void
+nomem( void ) {
     fprintf( stderr, "Devel::LeakTrace::Fast: Out of memory\n" );
     exit( 1 );
 }
 
-static const where *get_where( int line, const char *file ) {
+static const where *
+get_where( int line, const char *file ) {
     static int init_done = 0;
     static hash *cache = NULL;
     static buffer work;
@@ -70,7 +72,7 @@ static const where *get_where( int line, const char *file ) {
 
     w = ( where * ) work.buf;
     w->line = line;
-    strcpy( ( char * )( w + 1 ), file );
+    strcpy( ( char * ) ( w + 1 ), file );
 
     /* Already got it? */
     if ( w = ( where * ) hash_get( cache, w, sz ), NULL != w ) {
@@ -91,7 +93,8 @@ static const where *get_where( int line, const char *file ) {
     return w;
 }
 
-static void new_var( SV * sv, const void *p ) {
+static void
+new_var( SV * sv, const void *p ) {
     int err;
     const where *w = p;
 
@@ -102,13 +105,14 @@ static void new_var( SV * sv, const void *p ) {
     }
 
     if ( err =
-         hash_put( var_map, &sv, sizeof( sv ), ( void * )w ),
+         hash_put( var_map, &sv, sizeof( sv ), ( void * ) w ),
          ERR_None != err ) {
         nomem(  );
     }
 }
 
-static void free_var( SV * sv, const void *p ) {
+static void
+free_var( SV * sv, const void *p ) {
     int err;
 
 /*    fprintf(stderr, "%s, line %d: Free var: %p\n", (const char *) (w + 1), w->line, sv);*/
@@ -123,7 +127,8 @@ static void free_var( SV * sv, const void *p ) {
     }
 }
 
-static void new_arena( SV * sva, const void *p ) {
+static void
+new_arena( SV * sva, const void *p ) {
     const where *w = p;
     int err;
     /*fprintf(stderr, "%s, line %d: New arena: %p\n", (const char *) (w + 1), w->line, sva); */
@@ -149,25 +154,29 @@ static void new_arena( SV * sva, const void *p ) {
     /*fprintf(stderr, "%s, line %d: End new arena: %p\n", (const char *) (w + 1), w->line, sva); */
 }
 
-static void free_arena( SV * sva, const void *p ) {
+static void
+free_arena( SV * sva, const void *p ) {
     const where *w = p;
     fprintf( stderr, "%s, line %d: Free arena: %p\n",
-             ( const char * )( w + 1 ), w->line, sva );
+             ( const char * ) ( w + 1 ), w->line, sva );
     fprintf( stderr, "Don't know what to do when an arena is freed...\n" );
     exit( 1 );
 }
 
 #ifdef SANITY
-static void in_free_only( SV * sv, const void *p ) {
+static void
+in_free_only( SV * sv, const void *p ) {
     fprintf( stderr, "%p is in free list but not arenas", sv );
 }
 
-static void in_comp_only( SV * sv, const void *p ) {
+static void
+in_comp_only( SV * sv, const void *p ) {
     fprintf( stderr, "%p is in arenas but not free list", sv );
 }
 
 /* Sanity check - compare the free list with the list of free SVs in the arenas */
-static void free_list_sane( void ) {
+static void
+free_list_sane( void ) {
     list real_free;
     list comp_free;
     int err;
@@ -210,14 +219,15 @@ static void free_list_sane( void ) {
         fprintf( stderr, "Lists have %ld differences, stopping\n", diff );
         fprintf( stderr,
                  "%ld items in free list, %ld free items in arenas\n",
-                 ( long )list_used( &real_free ),
-                 ( long )list_used( &comp_free ) );
+                 ( long ) list_used( &real_free ),
+                 ( long ) list_used( &comp_free ) );
         exit( 1 );
     }
 }
 #endif
 
-static void note_new_vars( int line, const char *file ) {
+static void
+note_new_vars( int line, const char *file ) {
     list new_arenas;
     list new_free;
     int err;
@@ -267,7 +277,8 @@ static void note_new_vars( int line, const char *file ) {
 }
 
 #ifdef BRUTE_FORCE
-static void brute_force( int line, const char *file ) {
+static void
+brute_force( int line, const char *file ) {
     SV *sva;
     hash *baby;
     const where *w;
@@ -298,14 +309,14 @@ static void brute_force( int line, const char *file ) {
                         if ( w ) {
                             fprintf( stderr,
                                      "%s, line %d: New var (bf): %p\n",
-                                     ( const char * )( w + 1 ), w->line,
+                                     ( const char * ) ( w + 1 ), w->line,
                                      sv );
                         }
                     }
                 }
 
                 if ( err = hash_put( baby, &sv, sizeof( sv ),
-                                     hash_PUTNULL( ( void * )nw ) ),
+                                     hash_PUTNULL( ( void * ) nw ) ),
                      ERR_None != err ) {
                     nomem(  );
                 }
@@ -331,7 +342,8 @@ static void brute_force( int line, const char *file ) {
 
 #endif
 
-static int runops_leakcheck( pTHX ) {
+static int
+runops_leakcheck( pTHX ) {
     char *lastfile = NULL;
     int lastline = 0;
 
@@ -353,7 +365,8 @@ static int runops_leakcheck( pTHX ) {
     return 0;
 }
 
-void tools_reset_counters( void ) {
+void
+tools_reset_counters( void ) {
     int err;
 
     hash_delete( var_map );
@@ -378,7 +391,8 @@ void tools_reset_counters( void ) {
 #endif
 }
 
-void tools_hook_runops( void ) {
+void
+tools_hook_runops( void ) {
     tools_reset_counters(  );
     /*note_new_vars(0, NULL); */
     /*brute_force(0, NULL); */
@@ -388,7 +402,8 @@ void tools_hook_runops( void ) {
     }
 }
 
-static void print_var( SV * sv, const where * w ) {
+static void
+print_var( SV * sv, const where * w ) {
     char *type;
 
     if ( !w && var_map ) {
@@ -417,10 +432,11 @@ static void print_var( SV * sv, const where * w ) {
     }
 
     fprintf( stderr, "leaked %s(0x%p) from %s line %d\n",
-             type, sv, ( const char * )( w + 1 ), w->line );
+             type, sv, ( const char * ) ( w + 1 ), w->line );
 }
 
-void tools_show_used( void ) {
+void
+tools_show_used( void ) {
 /*  SV *sva; */
     hash_iter i;
     const void *k;
@@ -433,7 +449,7 @@ void tools_show_used( void ) {
     k = hash_get_first_key( var_map, &i, &kl );
     while ( k ) {
         const where *w =
-            ( const where * )hash_GETNULL( hash_get( var_map, k, kl ) );
+            ( const where * ) hash_GETNULL( hash_get( var_map, k, kl ) );
         if ( w ) {
             print_var( *( SV ** ) k, w );
         }
@@ -461,7 +477,7 @@ void tools_show_used( void ) {
         k = hash_get_first_key( brute, &i, &kl );
         while ( k ) {
             const where *w =
-                ( const where * )hash_GETNULL( hash_get( brute, k, kl ) );
+                ( const where * ) hash_GETNULL( hash_get( brute, k, kl ) );
             if ( w ) {
                 print_var( *( SV ** ) k, w );
             }
