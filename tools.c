@@ -351,13 +351,18 @@ runops_leakcheck( pTHX ) {
     if ( interesting_op( PL_op->op_type ) ) {
       /*fprintf(stderr, "%s, line %d\n", lastfile, lastline); */
       NOTE_NEW_VARS( lastline, lastfile );
-      lastfile = CopFILE( cCOP );
+      free( lastfile );
+      if ( lastfile = strdup( CopFILE( cCOP ) ), NULL == lastfile ) {
+        nomem(  );
+      }
       lastline = CopLINE( cCOP );
     }
   }
 
   /*fprintf(stderr, "%s, line %d\n", lastfile, lastline); */
   NOTE_NEW_VARS( lastline, lastfile );
+
+  free( lastfile );
 
   TAINT_NOT;
   return 0;
