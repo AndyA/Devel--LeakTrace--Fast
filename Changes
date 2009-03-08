@@ -17,3 +17,5 @@ Revision history for Devel-LeakTrace-Fast
         More tidying.
         Actually removed version.pm dep.
 
+0.12    2009-03-08
+        Don't trigger on OP_SETSTATE - which has been removed from recent Perls.
