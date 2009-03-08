@@ -5,9 +5,9 @@ use Config;
 
 my %args = (
   ( MM->can( 'signature_target' ) ? ( SIGN => 1 ) : () ),
+  license( 'perl' ),
   NAME          => 'Devel::LeakTrace::Fast',
   AUTHOR        => 'Andy Armstrong <andy@hexten.net>',
-  LICENSE       => 'perl',
   VERSION_FROM  => 'lib/Devel/LeakTrace/Fast.pm',
   ABSTRACT_FROM => 'lib/Devel/LeakTrace/Fast.pm',
   PL_FILES      => {},
@@ -26,3 +26,11 @@ if ( $Config{'ccname'} =~ /gcc/ ) {
 }
 
 WriteMakefile( %args );
+
+sub license {
+  my $lic = shift;
+  local $^W = 0;    # Silence warning about non-numeric version
+  return
+   unless $ExtUtils::MakeMaker::VERSION >= '6.31';
+  return ( LICENSE => $lic );
+}
