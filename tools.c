@@ -33,8 +33,7 @@ static hash *brute = NULL;
 /* Perl opcodes which trigger a memory scan */
 #define interesting_op(o) \
     ((o) == OP_NEXTSTATE || \
-     (o) == OP_DBSTATE   || \
-     (o) == OP_SETSTATE)
+     (o) == OP_DBSTATE)
 
 static void
 nomem( void ) {
