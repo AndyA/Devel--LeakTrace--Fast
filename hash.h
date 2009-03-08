@@ -11,9 +11,9 @@ typedef struct _hash_slot hash_slot;
  * inline.
  */
 struct _hash_slot {
-    long link;                  /* Offset of next link in chain */
-    size_t key_len;             /* Length of key (key data is inline after this) */
-    void *v;                    /* Value pointer */
+  long link;                    /* Offset of next link in chain */
+  size_t key_len;               /* Length of key (key data is inline after this) */
+  void *v;                      /* Value pointer */
 };
 
 struct _hash;
@@ -23,28 +23,28 @@ typedef int ( *hash_cb_kc ) ( struct _hash * h, void *d, const char *k,
 
 /* A hash */
 typedef struct _hash {
-    buffer buf;                 /* Buffer for keys */
-    long *slot;                 /* Array of buckets */
-    long cap;                   /* Size of bucket array */
-    long state;                 /* Incremented every time the hash's state changes so that we
+  buffer buf;                   /* Buffer for keys */
+  long *slot;                   /* Array of buckets */
+  long cap;                     /* Size of bucket array */
+  long state;                   /* Incremented every time the hash's state changes so that we
                                  * can spot the case where an iterator gets out of sync with
                                  * the hash it's iterating over.
                                  */
-    size_t size;
-    size_t deleted;
+  size_t size;
+  size_t deleted;
 
-    /* Optional callbacks for value addition, deletion */
-    void *cbd;
-    int ( *cb_add ) ( struct _hash * h, void *d, void **v );
-    int ( *cb_del ) ( struct _hash * h, void *d, void *v );
-    int ( *cb_upd ) ( struct _hash * h, void *d, void *ov, void **nv );
+  /* Optional callbacks for value addition, deletion */
+  void *cbd;
+  int ( *cb_add ) ( struct _hash * h, void *d, void **v );
+  int ( *cb_del ) ( struct _hash * h, void *d, void *v );
+  int ( *cb_upd ) ( struct _hash * h, void *d, void *ov, void **nv );
 
 } hash;
 
 typedef struct {
-    long state;
-    long bucket;
-    long sl;
+  long state;
+  long bucket;
+  long sl;
 } hash_iter;
 
 extern void *hash_NULL;

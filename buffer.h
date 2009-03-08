@@ -6,11 +6,11 @@
 #include <stddef.h>
 
 typedef struct {
-    void *buf;
-    size_t used;
-    size_t size;
-    size_t growby;
-    unsigned long flags;        /* Unused here - available for user apps */
+  void *buf;
+  size_t used;
+  size_t size;
+  size_t growby;
+  unsigned long flags;          /* Unused here - available for user apps */
 } buffer;
 
 int buffer_init( buffer * b, size_t initsize, size_t growby );

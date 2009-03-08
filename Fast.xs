@@ -1,6 +1,8 @@
 #include "common.h"
 #include "tools.h"
 
+/* *INDENT-OFF* */
+
 MODULE = Devel::LeakTrace::Fast PACKAGE = Devel::LeakTrace::Fast
 
 PROTOTYPES: ENABLE
